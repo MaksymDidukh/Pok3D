@@ -462,7 +462,16 @@
 
         // --- 4. 3D ФИШКИ ---
         const chipGeo = new THREE.CylinderGeometry(0.4, 0.4, 0.1, 32);
-        const chipMat = new THREE.MeshStandardMaterial({ color: 0xffb703, metalness: 0.3, roughness: 0.3 });
+        const chipMat = new THREE.MeshPhysicalMaterial({
+    color: 0xffb703,
+    metalness: 0.1,
+    roughness: 0.1,
+    transparent: true,
+    opacity: 0.7,
+    transmission: 0.6, // Эффект преломления света сквозь фишку
+    ior: 1.5           // Индекс преломления (как у пластика/стекла)
+});
+        
         const chipsGroup = new THREE.Group();
         scene.add(chipsGroup);
 
